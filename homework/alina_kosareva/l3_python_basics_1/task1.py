@@ -11,6 +11,4 @@ y = 16
 amount = x + y
 difference = x - y
 product = x * y
-
 print(amount, difference, product, sep="\n")
-
