@@ -13,4 +13,3 @@ difference = x - y
 product = x * y
 
 print(amount, difference, product, sep="\n")
-
