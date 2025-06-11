@@ -16,7 +16,7 @@ my_dict["list"].append("new_element")
 my_dict["list"].pop(1)
 
 # dict
-my_dict["dict"]["i am a tuple"] = 'new_element'
+my_dict["dict"][('i am a tuple',)] = 'new_element'
 # del my_dict["dict"]["two"]
 my_dict["dict"].pop("three")
 
