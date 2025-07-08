@@ -1,5 +1,6 @@
 import sys
 
+
 sys.set_int_max_str_digits(100001)
 
 def fibonacci_generator():
@@ -8,6 +9,7 @@ def fibonacci_generator():
     while True:
         yield a
         a, b = b, a + b
+
 
 gen = fibonacci_generator()
 
