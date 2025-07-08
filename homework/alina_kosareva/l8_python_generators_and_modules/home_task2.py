@@ -3,6 +3,7 @@ import sys
 
 sys.set_int_max_str_digits(100001)
 
+
 def fibonacci_generator():
     a = 0
     b = 1

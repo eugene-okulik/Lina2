@@ -9,4 +9,3 @@ if bonus:
 
 else:
     print(f"{salary}, {bonus} - '${salary}'")
-    
