@@ -20,11 +20,19 @@ class Book:
 
     def description(self):
         if self.reserved_flag:
-            description = f"Название: {self.book_title}, Автор: {self.author}, страниц: {self.number_pages},материал:  {self.page_material}, зарезервирована"
-            print(description)
+            description = (
+                f"Название: {self.book_title}, Автор: {self.author}, "
+                f"страниц: {self.number_pages}, материал: {self.page_material}, "
+                f"зарезервирована"
+            )
         else:
-            description = f"Название: {self.book_title}, Автор: {self.author}, страниц: {self.number_pages},материал:  {self.page_material}, незарезервирована"
-            print(description)
+            description = (
+                f"Название: {self.book_title}, Автор: {self.author}, "
+                f"страниц: {self.number_pages}, материал: {self.page_material}, "
+                f"незарезервирована"
+            )
+
+        print(description)
 
 
 book1 = Book("Идиот", "Достоевский", 500, reserved_flag=True)
@@ -69,10 +77,18 @@ class SchoolTextbooks(Book):
 
     def description(self):
         if self.tasks:
-            description = f"Название: {self.book_title}, Автор: {self.author}, страниц: {self.number_pages}, предмет: {self.subject}, класс: {self.school_class}, зарезервирована"
+            description = (
+                f"Название: {self.book_title}, Автор: {self.author}, "
+                f"страниц: {self.number_pages}, предмет: {self.subject}, "
+                f"класс: {self.school_class}, зарезервирована"
+            )
             print(description)
         else:
-            description = f"Название: {self.book_title}, Автор: {self.author}, страниц: {self.number_pages}, предмет: {self.subject}, класс: {self.school_class}"
+            description = (
+                f"Название: {self.book_title}, Автор: {self.author}, "
+                f"страниц: {self.number_pages}, предмет: {self.subject}, "
+                f"класс: {self.school_class}"
+            )
             print(description)
 
 
