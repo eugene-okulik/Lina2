@@ -1,0 +1,70 @@
+# Создайте студента (student)
+
+INSERT INTO students(name,second_name)
+VALUES ('Karl','Smith');
+
+SELECT * FROM students s 
+WHERE name='Karl' AND second_name='Smith';
+
+# Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+INSERT INTO books(title,taken_by_student_id)
+VALUES ('Изучаем Python',22693);
+
+SELECT * FROM books 
+WHERE taken_by_student_id=22693;
+
+#Создайте группу (group) и определите своего студента туда
+
+INSERT INTO `groups` (title,start_date,end_date)
+VALUES ('Python Core','April 6','May 26');
+
+SELECT * FROM `groups` 
+WHERE title='Python Core';
+
+UPDATE students
+SET group_id = 22651
+WHERE name = 'Karl' AND second_name = 'Smith';
+
+# Создайте несколько учебных предметов (subjects)
+INSERT INTO subjects (title)
+VALUES ('Python Core'),
+       ('Python for QA');
+
+SELECT * FROM subjects 
+WHERE title = 'Python for QA' or title = 'Python Core';
+
+# Создайте по два занятия для каждого предмета (lessons)
+
+INSERT INTO lessons (title,subject_id)
+VALUES ('Classes in Python',22738),
+       ('OOP in python',22738),
+	     ('Page object model ',22739),
+       ('Playwright core',22739);
+
+SELECT * FROM lessons l  
+WHERE subject_id = 22738 or subject_id = 22739;
+
+# Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+INSERT INTO marks (value,lesson_id,student_id)
+VALUES (7,75961,22693),
+       (8,75962,22693),
+	     (9,75963,22693),
+       (9,75964,22693);
+
+# Все оценки студента
+
+SELECT * FROM marks m 
+WHERE student_id=22693;
+
+# Все книги, которые находятся у студента
+SELECT * FROM books 
+WHERE taken_by_student_id=22693;
+
+# Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
+SELECT * FROM `groups` g
+JOIN students s on g.id = s.group_id
+JOIN books b on b.taken_by_student_id = s.id
+JOIN marks m on s.id =m.student_id 
+JOIN lessons l on m.lesson_id =l.id 
+JOIN subjects s2 on s2.id  = l.subject_id 
+WHERE s.id=22693;
