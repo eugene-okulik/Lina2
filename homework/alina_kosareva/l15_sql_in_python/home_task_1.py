@@ -125,9 +125,9 @@ print(cursor.fetchall())
 query = """ SELECT * FROM `groups` g
 JOIN students s on g.id = s.group_id
 JOIN books b on b.taken_by_student_id = s.id
-JOIN marks m on s.id =m.student_id 
-JOIN lessons l on m.lesson_id =l.id 
-JOIN subjects s2 on s2.id  = l.subject_id 
+JOIN marks m on s.id =m.student_id
+JOIN lessons l on m.lesson_id =l.id
+JOIN subjects s2 on s2.id  = l.subject_id
 WHERE s.id=%s"""
 
 cursor.execute(query, (user_id,))
