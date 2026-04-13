@@ -112,7 +112,7 @@ values = [
         user_id,
     ),
 ]
-cursor.executemany(query,values)
+cursor.executemany(query, values)
 cursor.execute("SELECT * FROM marks m WHERE student_id = %s", (user_id,))
 print(cursor.fetchall())
 
