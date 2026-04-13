@@ -51,11 +51,7 @@ values = [
         user_id,
     ),
 ]
-book_id = []
-for book in values:
-    cursor.execute(query, book)
-    book_id.append(cursor.lastrowid)
-print(book_id)
+cursor.executemany(query, values)
 
 # Создание нескольких учебных предметов (subjects)
 query = "INSERT INTO subjects (title) VALUES (%s);"
@@ -116,8 +112,7 @@ values = [
         user_id,
     ),
 ]
-for mark in values:
-    cursor.execute(query, mark)
+cursor.executemany(query,values)
 cursor.execute("SELECT * FROM marks m WHERE student_id = %s", (user_id,))
 print(cursor.fetchall())
 
