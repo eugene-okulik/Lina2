@@ -8,7 +8,14 @@ import csv
 dotenv.load_dotenv(override=True)
 # fake = Faker()
 
-with open("../../eugene_okulik/Lesson_16/hw_data/data.csv", newline="") as csv_file:
+base_path = os.path.dirname(__file__)
+homework_path = os.path.dirname(os.path.dirname(base_path))
+data_file_path = os.path.join(
+    homework_path, "eugene_okulik", "Lesson_16", "hw_data", "data.csv"
+)
+print(data_file_path)
+
+with open(data_file_path, newline="") as csv_file:
     file_data = csv.DictReader(csv_file)
     st_data = []
     for row in file_data:
