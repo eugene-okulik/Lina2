@@ -50,7 +50,6 @@ def search_text(blocks, search_text):
     for time, data in blocks.items():
         text = data["text"]
         if search_text.lower() in text.lower():
-            found = True
             words = text.split()
             word_index = None
             for i, word in enumerate(words):
