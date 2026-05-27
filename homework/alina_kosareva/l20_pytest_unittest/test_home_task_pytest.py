@@ -73,7 +73,7 @@ def test_update_patch_objects(new_object_id):
 
 @pytest.mark.medium
 def test_get_objects():
-    response = requests.get(f"http://objapi.course.qa-practice.com/object")
+    response = requests.get("http://objapi.course.qa-practice.com/object")
     assert response.status_code == 200
     print(response.json())
 
