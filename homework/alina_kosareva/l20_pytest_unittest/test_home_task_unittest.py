@@ -47,6 +47,6 @@ class TestObjectApi(unittest.TestCase):
 
 class TestObjectIndependentApi(unittest.TestCase):
     def test_get_objects(self):
-        response = requests.get(f"http://objapi.course.qa-practice.com/object")
+        response = requests.get("http://objapi.course.qa-practice.com/object")
         self.assertEqual(response.status_code, 200)
         print(response.json())
