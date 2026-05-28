@@ -17,6 +17,23 @@ def text():
 
 
 @pytest.fixture()
+def new_object_id_without_delete():
+    body = {
+        "name": "Alina",
+        "data": {
+            "student": "Python automation course",
+            "teacher": "Eugene_Okulik",
+        },
+    }
+    response = requests.post(
+        "http://objapi.course.qa-practice.com/object",
+        json=body,
+    )
+    assert response.status_code == 200
+    return response.json().get("id")
+
+
+@pytest.fixture()
 def new_object_id():
     body = {
         "name": "Alina",
@@ -106,3 +123,10 @@ def test_create_object(name, student, teacher):
     assert response_json["name"] == name
     assert response_json["data"]["student"] == student
     assert response_json["data"]["teacher"] == teacher
+
+
+def test_delete_objects(new_object_id_without_delete):
+    response = requests.delete(
+        f"http://objapi.course.qa-practice.com/object/{new_object_id_without_delete}"
+    )
+    assert response.status_code == 200
