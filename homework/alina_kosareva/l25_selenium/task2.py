@@ -26,7 +26,7 @@ def test_task2(driver):
     phone = "2293333333"
     subject = "Arts"
     address = "Kojeduba 14/24"
-    driver.get(" https://demoqa.com/automation-practice-form")
+    driver.get("https://demoqa.com/automation-practice-form")
     name_input = driver.find_element(By.ID, "firstName")
     name_input.send_keys(name)
     lastname_input = driver.find_element(By.ID, "lastName")
@@ -59,8 +59,7 @@ def test_task2(driver):
     address_input = driver.find_element(By.ID, "currentAddress")
     address_input.send_keys(address)
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    # Без этого слипа вообще никак
-    time.sleep(3)
+    wait.until(EC.visibility_of_element_located((By.ID, "state")))
     driver.find_element(By.ID, "state").click()
     driver.find_element(By.XPATH, "//div[text()='Haryana']").click()
     driver.find_element(By.ID, "city").click()
