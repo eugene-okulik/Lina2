@@ -38,7 +38,7 @@ def test_task1(driver):
     driver.switch_to.window(tabs[0])
     driver.find_element(By.CLASS_NAME, "o_wsale_my_cart").click()
     driver.find_element(By.ID, "cart_products")
-    time.sleep(3)
+    driver.find_element(By.PARTIAL_LINK_TEXT, "Customizable Desk")
 
 
 def test_task2(driver):
@@ -46,6 +46,14 @@ def test_task2(driver):
     driver.get("http://testshop.qa-practice.com/")
     link = driver.find_element(By.CLASS_NAME, "oe_product")
     cart = driver.find_element(By.CSS_SELECTOR, ".btn.btn-primary.a-submit")
+    expected_product_name = link.find_element(
+        By.CSS_SELECTOR, "h6.o_wsale_products_item_title a"
+    ).text
+
     ActionChains(driver).move_to_element(link).move_to_element(cart).click().perform()
     wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-content")))
     driver.find_element(By.CSS_SELECTOR, ".product-name.product_display_name")
+    actual_product_name = driver.find_element(
+        By.CSS_SELECTOR, ".product-name.product_display_name"
+    ).text
+    assert expected_product_name in actual_product_name
