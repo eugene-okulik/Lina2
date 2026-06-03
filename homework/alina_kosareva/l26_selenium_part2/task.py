@@ -38,7 +38,8 @@ def test_task1(driver):
     driver.switch_to.window(tabs[0])
     driver.find_element(By.CLASS_NAME, "o_wsale_my_cart").click()
     driver.find_element(By.ID, "cart_products")
-    driver.find_element(By.PARTIAL_LINK_TEXT, "Customizable Desk")
+    product = driver.find_element(By.PARTIAL_LINK_TEXT, "Customizable Desk")
+    assert product.is_displayed()
 
 
 def test_task2(driver):
@@ -49,7 +50,6 @@ def test_task2(driver):
     expected_product_name = link.find_element(
         By.CSS_SELECTOR, "h6.o_wsale_products_item_title a"
     ).text
-
     ActionChains(driver).move_to_element(link).move_to_element(cart).click().perform()
     wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-content")))
     driver.find_element(By.CSS_SELECTOR, ".product-name.product_display_name")
